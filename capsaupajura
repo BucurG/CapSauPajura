@@ -1,0 +1,48 @@
+import random
+import math
+nume_1 = input("Jucatorul 1 sa aleaga numele: ")
+nume_2 = input("Jucatorul 2 sa aleaga numele: ")
+player_1 = nume_1
+player_2 = nume_2
+message_2 = ''
+list = ['cap', 'pajura']
+rezultat = ''
+scor_1 = 0
+scor_2 = 0
+choice = '\nCe crezi ca o sa cada,' + player_1.title() + '? '
+choice += '\nPress "q" to quit '
+message = ''
+while message != 'q':
+    if scor_1 == 3 and scor_2 == 3:
+        print('Egalitate')
+        break
+    elif scor_1 == 3:
+        print(player_1.title() + ' a castigat!')
+        break
+    elif scor_2 == 3:
+        print(player_2.title() + ' a castigat!')
+        break
+    rezultat = random.choice(list)
+    message = input(choice)
+    choice_2 = input('Ce crezi ca o sa cada,' + player_2.title() + '?')
+    print(player_1.title() + ' a ales ' + message)
+    print(player_2.title() + ' a ales ' + choice_2)
+    print("banul a fost aruncat si a cazut " + rezultat)
+    if message == rezultat and choice_2 == rezultat:
+        scor_1 += 1
+        scor_2 += 1
+        print("Toti jucatorii au primit 1 punct!")
+        print('Scorul lui ' + player_1.title() + ' este ' + str(scor_1))
+        print('Scorul lui ' + player_2.title() + ' este ' + str(scor_2))
+    elif message == rezultat:
+        scor_1 += 1
+        print(player_1 + ' a raspuns corect.\nPrimeste un punct!')
+        print('Scorul lui ' + player_1.title() + ' este ' + str(scor_1))
+        print('Scorul lui ' + player_2.title() + ' este ' + str(scor_2))
+    elif choice_2 == rezultat:
+        scor_2 += 1
+        print(player_2 + ' a raspuns corect.\nPrimeste un punct!')
+        print('Scorul lui ' + player_1.title() + ' este ' + str(scor_1))
+        print('Scorul lui ' + player_2.title() + ' este ' + str(scor_2))
+    else:
+        print('Nimeni nu a raspuns corect!\nScorul ramane acelasi!')
